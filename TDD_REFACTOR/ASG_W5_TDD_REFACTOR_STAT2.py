@@ -2,9 +2,13 @@
 from TDDUtils import *
 import math
 
+
+
+
 print("TDD + REFACTOR\n")
 f=open('dataset1.csv')
 w=open('dataset1-convert.csv','w')
+
 
 #########################################
 
@@ -14,6 +18,8 @@ header=f.readline()[:-1]
 #print(header)
 assert "x1,x2" == header
 w.write("x1,x2,x1px2,x1mx2\n")
+
+cLines = 1 # number of Lines, includes Header
 
 for l in f:
     l=l[:-1]
@@ -25,9 +31,31 @@ for l in f:
     r=map(lambda x: str(x),r)
     w.write(','.join(r)+"\n")
 
+    cLines += 1
+
 w.close()
 
+print('Lines = ' + str(cLines))
 
+cNodes = cLines - 1
+
+print('Nodess = ' + str(cNodes))
+
+fact = math.factorial
+cArcs = fact(cNodes) / fact(cNodes-2)
+
+print('Arcs = ' + str(cArcs))
+
+
+
+cCols= len(header)
+print(header)
+
+
+        
+
+#########################################
+# CLASS
 #########################################
 
 def nAr(n,r):
@@ -51,7 +79,6 @@ class Data_Reader:
         return True
     
     def readHeader(self):
-        header=self.fl.readline()
         header=self.fl.readline()
         print(header)
         return True
@@ -99,9 +126,9 @@ assertEquals(long(812),nArcs,'Test output of the Data_Reader instance: number of
 
 
 
-dtr.countCols()
+nCols = dtr.countCols()
 #print(type(dtr.countCols()))
-assertEquals(int(2),dtr.countCols(),'Test output of the Data_Reader instance: number of Columns')
+assertEquals(int(2),nCols,'Test output of the Data_Reader instance: number of Columns')
 
 
 
