@@ -100,14 +100,8 @@ assertEquals(long(812),nArcs,'Test output of the Data_Reader instance: number of
 
 
 dtr.countCols()
-
-
-
-
-
-
-
-
+#print(type(dtr.countCols()))
+assertEquals(int(2),dtr.countCols(),'Test output of the Data_Reader instance: number of Columns')
 
 
 
