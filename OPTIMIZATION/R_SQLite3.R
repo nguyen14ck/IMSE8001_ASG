@@ -1,0 +1,7 @@
+drv <- dbDriver("SQLite")
+con <- dbConnect(drv, "E:/temp/GitEye-1.8.0-windows.x86_64/GIT/IMSE8001_ASG/OPTIMIZATION/py_r_db")
+dbListTables(con)
+dbListFields(con, "CSV")
+csv_data = dbGetQuery(con, "Select x1, x2, x3, x4 from CSV")
+length(csv_data)
+plot(x2~x1,csv_data)
